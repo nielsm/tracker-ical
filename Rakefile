@@ -5,9 +5,9 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "tracker-ical"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
-    gem.email = "nmeersschaert@mac.com"
+    gem.summary = %Q{Pivotal Tracker meets iCal}
+    gem.description = %Q{Get your iterations and releases in iCalendar format}
+    gem.email = "niels@meerwerks.com"
     gem.homepage = "http://github.com/nielsm/tracker-ical"
     gem.authors = ["Niels Meersschaert"]
     gem.add_development_dependency "rspec", ">= 1.2.9"

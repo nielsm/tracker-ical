@@ -1,6 +1,6 @@
 = tracker-ical
 
-Description goes here.
+Pivotal iterations and releases output as iCal feed
 
 == Note on Patches/Pull Requests
  
