@@ -1,3 +1,6 @@
+= 0.0.2
+   Releases are now included in the iCal feed
+   Iterations display the total number of points in each
 = 0.0.1
    Initial release.  
    Provides iCal formatted output of Iterations
