@@ -1,5 +1,6 @@
 require 'icalendar'
 require 'pivotal-tracker'
+require File.join(File.dirname(__FILE__), 'pivotal-tracker', 'story')
 
 class TrackerIcal
 
@@ -38,6 +39,7 @@ class TrackerIcal
   private
 
   def self.release_event(project,calendar,release)
+    #Can't generate release events since pivotal-tracker gem doesn't include deadline info for releases
     puts("Release events not yet implemented")  
   end
 
