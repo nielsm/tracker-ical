@@ -55,20 +55,19 @@ class TrackerIcal
   end
 
   def self.iteration_event(project,calendar,iter)
-    story_hash={}
+    stories = []
+    
     iter.stories.each do |story|
-      story_hash[story.name] = story.current_state
+      stories.push("#{story.name} (#{story.current_state})")
     end
-    desc = []
-    story_hash.keys.each do |key|
-      desc.push("#{key}: #{story_hash[key]}")
-    end
+    
     points = self.iteration_points(iter)
+    
     calendar.event do
       dtstart       Date.new(iter.start.year,iter.start.month,iter.start.day)
       dtend         Date.new(iter.finish.year,iter.finish.month,iter.finish.day)
       summary       "#{project.name}: Iteration #{iter.number} (#{points} points)"
-      description   desc.join("\n")
+      description   stories.join("\n")
     end
   end
 
