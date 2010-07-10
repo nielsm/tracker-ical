@@ -2,6 +2,14 @@
 
 Pivotal iterations and releases output as iCal feed
 
+== Usage
+TrackerIcal.token('myusername@email.com', 'secretpassword')        # Automatically fetch API Token
+TrackerIcal.token = 'jkfduisj97823974j2kl24899234'                 # Manually set API Token
+
+TrackerIcal.create_calendar_for_project_id(project_id)  			#Pass the projectID of the Pivotal Project to generate iCal string for
+
+TrackerIcal.create_ics_file_for_project_id(filepath,project_id)    #Generates an ics file at the specified filepath for the Pivotal project with project_id
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
