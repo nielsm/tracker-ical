@@ -19,10 +19,12 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     "CHANGELOG.rdoc",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "lib/pivotal-tracker/story.rb",
      "lib/tracker-ical.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",

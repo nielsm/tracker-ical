@@ -39,8 +39,15 @@ class TrackerIcal
   private
 
   def self.release_event(project,calendar,release)
-    #Can't generate release events since pivotal-tracker gem doesn't include deadline info for releases
-    puts("Release events not yet implemented")  
+    unless release.deadline.nil?
+      puts("Adding release #{release.name} to calendar")
+      calendar.event do
+        dtstart       Date.new(release.deadline.year,release.deadline.month,release.deadline.day)
+        dtend         Date.new(release.deadline.year,release.deadline.month,release.deadline.day)
+        summary       release.name
+        description   release.description
+      end
+    end
   end
 
   def self.iteration_event(project,calendar,iter)
