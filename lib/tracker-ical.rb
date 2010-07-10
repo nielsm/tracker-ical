@@ -40,7 +40,6 @@ class TrackerIcal
 
   def self.release_event(project,calendar,release)
     unless release.deadline.nil?
-      puts("Adding release #{release.name} to calendar")
       calendar.event do
         dtstart       Date.new(release.deadline.year,release.deadline.month,release.deadline.day)
         dtend         Date.new(release.deadline.year,release.deadline.month,release.deadline.day)
@@ -48,6 +47,11 @@ class TrackerIcal
         description   release.description
       end
     end
+  end
+  
+  def self.iteration_points(iteration)
+    point_array = iteration.stories.collect(&:estimate).compact
+    eval point_array.join('+')
   end
 
   def self.iteration_event(project,calendar,iter)
@@ -59,10 +63,11 @@ class TrackerIcal
     story_hash.keys.each do |key|
       desc.push("#{key}: #{story_hash[key]}")
     end
+    points = self.iteration_points(iter)
     calendar.event do
       dtstart       Date.new(iter.start.year,iter.start.month,iter.start.day)
       dtend         Date.new(iter.finish.year,iter.finish.month,iter.finish.day)
-      summary       "#{project.name}: Iteration #{iter.number}"
+      summary       "#{project.name}: Iteration #{iter.number} (#{points} points)"
       description   desc.join("\n")
     end
   end
