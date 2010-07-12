@@ -2,9 +2,8 @@
 
 PivotalTracker iterations and releases output as an iCalendar feed.
 
-
-
 == Requirements
+
 * PivotalTracker account with API access.  Signup at Pivotal[https://www.pivotaltracker.com/signup/new]
 * API token for the account
 
@@ -19,7 +18,7 @@ PivotalTracker iterations and releases output as an iCalendar feed.
 
 == Changelog
 
-See changelog[link:files/CHANGELOG_rdoc.html]
+See CHANGELOG for details
 	
 == Note on Patches/Pull Requests
  
