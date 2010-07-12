@@ -4,14 +4,18 @@ require File.join(File.dirname(__FILE__), 'pivotal-tracker', 'story')
 
 class TrackerIcal
 
+  #Set the PivotalTracker token to be used for interating with the Pivotal API
   def self.token=(token)
     PivotalTracker::Client.token=token
   end
 
+  #Retrieves the PivotalTracker token for a given username and password, enabling further interaction with the Pivotal API
   def self.token(username,password)
     PivotalTracker::Client.token(username,password)
   end
-  #Returns an ics formatted string of all the milestones in the project
+  
+  #Returns an ics formatted string of all the iterations and releases in the project
+  #If a release does not have a deadline, it will not be included in the output
   def self.create_calendar_for_project_id(project_id)
     project = PivotalTracker::Project.find(project_id)
     releases = project.stories.all(:story_type => 'release')
@@ -30,6 +34,7 @@ class TrackerIcal
     return calendar.to_ical
   end
 
+  #Creates an ics file at the specified filepath containing the iterations and releases with deadlines for the project_id
   def self.create_ics_file_for_project_id(filepath,project_id)
     file = File.new(filepath,"w+")
     file.write(self.create_calendar_for_project_id(project_id))

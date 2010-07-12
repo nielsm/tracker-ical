@@ -1,16 +1,26 @@
 = tracker-ical
 
-Pivotal iterations and releases output as an iCal feed
+PivotalTracker iterations and releases output as an iCalendar feed.
+
+
+
+== Requirements
+* PivotalTracker account with API access.  Signup at Pivotal[https://www.pivotaltracker.com/signup/new]
+* API token for the account
 
 == Configuration
    TrackerIcal.token('myusername@email.com', 'secretpassword')        # Automatically fetch API Token from PivotalTracker
-   TrackerIcal.token = 'jkfduisj97823974j2kl24899234'                 # Manually set API Token for Pivotal Tracker
+   TrackerIcal.token = 'jkfduisj97823974j2kl24899234'                 # Manually set API Token for PivotalTracker
 
 == Usage
-   TrackerIcal.create_calendar_for_project_id(project_id)             #Pass the projectID of the Pivotal project to generate iCal string for
+   TrackerIcal.create_calendar_for_project_id(project_id)             #Pass the project_id of the PivotalTracker project to generate iCal string for
 
-   TrackerIcal.create_ics_file_for_project_id(filepath,project_id)    #Generates an ics file at the specified filepath for the Pivotal project with project_id
+   TrackerIcal.create_ics_file_for_project_id(filepath,project_id)    #Generates an ics file at the specified filepath for the PivotalTracker project with project_id
 
+== Changelog
+
+See changelog[link:files/CHANGELOG_rdoc.html]
+	
 == Note on Patches/Pull Requests
  
 * Fork the project.
