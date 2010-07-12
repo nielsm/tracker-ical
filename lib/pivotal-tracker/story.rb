@@ -1,5 +1,5 @@
-module PivotalTracker
-  class Story
+module PivotalTracker #:nodoc:[all]
+  class Story #:nodoc:[all]
     
     element :deadline, DateTime
   end
