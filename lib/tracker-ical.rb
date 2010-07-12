@@ -50,8 +50,11 @@ class TrackerIcal
   end
   
   def self.iteration_points(iteration)
+    points = {}
     point_array = iteration.stories.collect(&:estimate).compact
-    eval point_array.join('+')
+    accepted_point_array = iteration.stories.select{|story|story.current_state == 'accepted'}.collect(&:estimate).compact
+    points[:total] = eval point_array.join('+').to_i
+    points[:accepted] = eval accepted_point_array.join('+').to_i
   end
 
   def self.iteration_event(project,calendar,iter)
@@ -66,7 +69,7 @@ class TrackerIcal
     calendar.event do
       dtstart       Date.new(iter.start.year,iter.start.month,iter.start.day)
       dtend         Date.new(iter.finish.year,iter.finish.month,iter.finish.day)
-      summary       "#{project.name}: Iteration #{iter.number} (#{points} points)"
+      summary       "#{project.name}: Iteration #{iter.number} (#{points[:accepted]}/#{points[:total]} points)"
       description   stories.join("\n")
     end
   end
