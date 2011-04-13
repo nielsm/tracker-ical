@@ -8,6 +8,11 @@ class TrackerIcal
   def self.token=(token)
     PivotalTracker::Client.token=token
   end
+  
+  #Set if PivotalTracker API should be accessed via SSL for all requests
+  def self.use_ssl=(ssl=true)
+    PivotalTracker::Client.use_ssl = ssl  
+  end
 
   #Retrieves the PivotalTracker token for a given username and password, enabling further interaction with the Pivotal API
   def self.token(username,password)
@@ -58,8 +63,9 @@ class TrackerIcal
     points = {}
     point_array = iteration.stories.collect(&:estimate).compact
     accepted_point_array = iteration.stories.select{|story|story.current_state == 'accepted'}.collect(&:estimate).compact
-    points[:total] = eval point_array.join('+').to_i
-    points[:accepted] = eval accepted_point_array.join('+').to_i
+    points[:total] = eval point_array.join('+')
+    points[:accepted] = eval accepted_point_array.join('+')
+    return points
   end
 
   def self.iteration_event(project,calendar,iter)
@@ -74,7 +80,7 @@ class TrackerIcal
     calendar.event do
       dtstart       Date.new(iter.start.year,iter.start.month,iter.start.day)
       dtend         Date.new(iter.finish.year,iter.finish.month,iter.finish.day)
-      summary       "#{project.name}: Iteration #{iter.number} (#{points[:accepted]}/#{points[:total]} points)"
+      summary       "#{project.name}: Iteration #{iter.number} (#{points[:accepted].to_i}/#{points[:total].to_i} points)"
       description   stories.join("\n")
     end
   end
