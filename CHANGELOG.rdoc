@@ -1,3 +1,7 @@
+= 0.0.3
+   Supports SSL accounts
+   Upgraded to bundler for development
+   Fixed bug with point totals
 = 0.0.2
    Releases are now included in the iCal feed
    Iterations display the total number of points in each
