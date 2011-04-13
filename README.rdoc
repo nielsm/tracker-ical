@@ -8,14 +8,19 @@ PivotalTracker iterations and releases output as an iCalendar feed.
 * API token for the account
 
 == Configuration
+   Can be done with individual calls:
+
    TrackerIcal.token('myusername@email.com', 'secretpassword')        # Automatically fetch API Token from PivotalTracker
    TrackerIcal.token = 'jkfduisj97823974j2kl24899234'                 # Manually set API Token for PivotalTracker
-   TrackerIcal.use_ssl = true 										  # Set to true if account requires SSL.  Default is false
+   TrackerIcal.use_ssl = true 					      # Set to true if account requires SSL.  Default is false
+
+   There is also support for setting both the token & ssl in a single call
+   TrackerIcal.configure({:token => 'jkfduisj97823974j2kl24899234', :use_ssl => true})
 
 == Usage
-   TrackerIcal.create_calendar_for_project_id(project_id)             #Pass the project_id of the PivotalTracker project to generate iCal string for
+   TrackerIcal.calendar_for_project(project_id)             #Pass the project_id of the PivotalTracker project to generate iCal string for
 
-   TrackerIcal.create_ics_file_for_project_id(filepath,project_id)    #Generates an ics file at the specified filepath for the PivotalTracker project with project_id
+   TrackerIcal.ics_file_for_project(filepath,project_id)    #Generates an ics file at the specified filepath for the PivotalTracker project with project_id
 
 == Changelog
 
